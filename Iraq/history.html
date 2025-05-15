@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تاريخ العراق - موسوعة العراق العظيم</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    .search-container input {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #222;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>تاريخنا العظيم</h1>
+    <p>من لا يعرف تاريخه لا يعرف نفسه</p>
+  </header>
+
+  <nav>
+    <a href="index.html">الصفحة الرئيسية</a>
+    <a href="submit.html">إرسال مساهمة</a>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث في التاريخ..." onkeyup="filterCards()">
+  </div>
+
+  <section class="grid" id="cardsContainer">
+    <div class="card">
+      <img src="https://ar.irakipedia.org/Attachments/hamouirabi.jpg" alt="الملك حمورابي">
+<h3><a href="history/h1.html">الملك حمورابي</a></h3>
+    </div>
+
+    <div class="card">
+      <img src="https://i0.wp.com/www.ibelieveinsci.com/wp-content/uploads/52232b40d13874367d8ba7d6c85bc9c4.jpg?fit=500%2C587&ssl=1" alt="الملك نبوخذنصر">
+<h3><a href="history/h2.html">الملك نبوخذنصر</a></h3>
+    </div>
+
+       <div class="card">
+      <img src="https://modo3.com/thumbs/fit630x300/259528/1642698743/%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%D8%A7%D8%AA_%D8%A7%D9%84%D8%AD%D8%B6%D8%A7%D8%B1%D8%A9_%D8%A7%D9%84%D8%B3%D9%88%D9%85%D8%B1%D9%8A%D8%A9.jpg" alt="الحضارة السومرية">
+<h3><a href="history/h3.html">الحضارة السومرية</a></h3>
+    </div>
+
+  </section>
+
+  <script>
+    function filterCards() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.getElementById("cardsContainer").getElementsByClassName("card");
+
+      for (let i = 0; i < cards.length; i++) {
+        const title = cards[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+        cards[i].style.display = title.includes(input) ? "" : "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

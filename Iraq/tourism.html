@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>السياحة في العراق - موسوعة العراق العظيم</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    .search-container input {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #222;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>السياحه في العراق</h1>
+    <p>السياحه في بلدنا الحبيب</p>
+  </header>
+
+  <nav>
+    <a href="index.html">الصفحة الرئيسية</a>
+    <a href="submit.html">إرسال مساهمة</a>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن اسم مكان سياحي  ..." onkeyup="filterCards()">
+  </div>
+
+  <section class="grid" id="cardsContainer">
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Al-Ukhaidir_Fortress_%2830655095821%29.jpg/500px-Al-Ukhaidir_Fortress_%2830655095821%29.jpg" alt="حصن الاخيضر">
+<h3><a href="tourism/t1.html">حصن الاخيضر</a></h3>
+      <p>قلعة اثرية في كربلاء</p>
+
+    </div>
+
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Inbound2124991155547896223.jpg/500px-Inbound2124991155547896223.jpg" alt="بحيرة الحبانية">
+<h3><a href="tourism/t2.html">بحيرة الحبانية</a></h3>
+      <p>بحيرة سياحية في الانبار</p>
+
+    </div>
+
+          <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/%D9%85%D9%86%D8%B7%D9%82%D8%A9_%D8%BA%D8%A7%D8%A8%D8%A7%D8%AA_%D8%A7%D9%84%D9%85%D9%88%D8%B5%D9%84.JPG/500px-%D9%85%D9%86%D8%B7%D9%82%D8%A9_%D8%BA%D8%A7%D8%A8%D8%A7%D8%AA_%D8%A7%D9%84%D9%85%D9%88%D8%B5%D9%84.JPG" alt="غابات الموصل">
+<h3><a href="tourism/t3.html">غابات الموصل</a></h3>
+      <p>غابات في الموصل مطله على نهر دجله</p>
+
+    </div>
+
+
+  </section>
+
+  <script>
+    function filterCards() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.getElementById("cardsContainer").getElementsByClassName("card");
+
+      for (let i = 0; i < cards.length; i++) {
+        const title = cards[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+        cards[i].style.display = title.includes(input) ? "" : "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
