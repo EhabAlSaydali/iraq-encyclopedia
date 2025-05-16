@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مراجعة المساهمات - موسوعة العراق العظيم</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contribution {
+      background-color: #f0f0f0;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .contribution h3 {
+      margin: 0 0 10px 0;
+      color: #222;
+    }
+
+    .contribution p {
+      margin: 5px 0;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #1e88e5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1565c0;
+    }
+
+    .published {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>قائمة المساهمات الواردة</h2>
+  <div id="contributions"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAvGPe0-jFOLNFVIBiSlTbsT9uT-B2-Elk",
+      authDomain: "iraq-encyclopedia.firebaseapp.com",
+      projectId: "iraq-encyclopedia",
+      storageBucket: "iraq-encyclopedia.firebasestorage.app",
+      messagingSenderId: "337673671856",
+      appId: "1:337673671856:web:91a6a91494afce4c741775"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const contributionsDiv = document.getElementById('contributions');
+
+    async function loadContributions() {
+      const q = query(collection(db, "contributions"), orderBy("timestamp", "desc"));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const item = document.createElement('div');
+        item.className = 'contribution';
+        item.innerHTML = `
+          <h3>${data.name} - (${data.category})</h3>
+          <p>${data.details}</p>
+          ${!data.published ? `<button onclick="publish('${docSnap.id}')">نشر</button>` : `<span class="published">✔ منشور</span>`}
+        `;
+        contributionsDiv.appendChild(item);
+      });
+    }
+
+    loadContributions();
+
+    window.publish = async function(id) {
+      const docRef = doc(db, "contributions", id);
+      await updateDoc(docRef, {
+        published: true
+      });
+      alert("تم نشر المساهمة!");
+      location.reload();
+    };
+  </script>
+
+</body>
+</html>

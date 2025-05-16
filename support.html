@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ادعمنا - موسوعة العراق العظيم</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background-color: #f5f5f5;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .card {
+      max-width: 500px;
+      margin: auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #222;
+    }
+
+    .wallet {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    button {
+      background-color: #1e88e5;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    button:hover {
+      background-color: #1565c0;
+    }
+
+    img {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+ <nav>
+    <a href="index.html">الصفحة الرئيسية</a>
+  </nav>
+
+  <div class="card">
+    <h2>ادعم موسوعة العراق العظيم</h2>
+    <h2>تأكد ان كل دينار ترسله مؤثر،</h2>
+     <h2>لجعل بلدنا أفضل، لنا ولأولادنا</h2>
+    <p>يمكنك دعمنا عبر زين كاش على الرقم التالي:</p>
+
+    <div class="wallet" id="wallet">07709826048</div>
+
+    <button onclick="copyNumber()">📋 نسخ الرقم</button>
+
+    <p>لنسخ الرقم QR أدناه:</p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=07709826048" alt="QR لزين كاش">
+  </div>
+
+  <script>
+    function copyNumber() {
+      const number = document.getElementById("wallet").innerText;
+      navigator.clipboard.writeText(number).then(() => {
+        alert("تم نسخ رقم زين كاش إلى الحافظة!");
+      });
+    }
+  </script>
+
+</body>
+</html>
